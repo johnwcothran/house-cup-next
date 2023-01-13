@@ -16,5 +16,5 @@
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "cypress/integration/book.cy.js"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "./cypress.config.ts"]
 }
