@@ -49,6 +49,9 @@ const StartTrivia = ({ book }: StartTriviaProps) => {
                     <Grid item xs={12}>
                         <TextField
                             label='Your Name'
+                            id='name'
+                            data-cy="enter-name-input"
+                            name='name'
                             fullWidth
                             variant='outlined'
                             size='large'
@@ -61,7 +64,11 @@ const StartTrivia = ({ book }: StartTriviaProps) => {
                         <Grid container justifyContent={'space-between'}>
                             {houses.map(house => (
                                 <Grid item xs={12 / (houses.length)} key={house.name} textAlign={'center'}>
-                                    <Button variant={userHouse === house.name ? 'outlined' : 'text'} onClick={() => { setUserHouse(house.name) }}>
+                                    <Button
+                                        id={`select-house-${house.name}`}
+                                        data-cy={`select-house-${house.name}`}
+                                        variant={userHouse === house.name ? 'outlined' : 'text'}
+                                        onClick={() => { setUserHouse(house.name) }}>
                                         <Image
                                             src={house.image}
                                             alt={house.name}

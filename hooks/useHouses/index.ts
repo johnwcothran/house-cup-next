@@ -1,8 +1,6 @@
-import { Refresh } from "@material-ui/icons";
-import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
-import { rejects } from "assert";
-import { useEffect, useState } from "react";
-import { GameType, HousesType, HouseType, newGame } from "../../pages/api/trivia/[...params]";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { GameType, HouseType } from "../../pages/api/socket";
 import { useSocket } from "../useSocket";
 
 export const houses = [

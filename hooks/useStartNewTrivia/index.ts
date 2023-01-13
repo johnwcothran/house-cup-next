@@ -1,5 +1,6 @@
 import Router from "next/router";
 import { useEffect, useState } from "react";
+import { makeid } from "../../utils/utilityFunctions";
 import { useSocket } from "../useSocket";
 
 type Props = {
@@ -18,15 +19,6 @@ export const useStartNewTrivia = ({bookSlug}: Props) => {
         e.preventDefault();
         setName(e.currentTarget?.value.toUpperCase().trim())
     };
-    function makeid() {
-        let result           = '';
-        let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        let charactersLength = characters.length;
-        for (let i = 0; i < 4; i++ ) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        return result;
-    }
     const onStartNewGame = () => {
         const newGameId = makeid()
         socket.emit('join_game', {gameId: newGameId}, (response) => {
@@ -45,10 +37,10 @@ export const useStartNewTrivia = ({bookSlug}: Props) => {
 
     return {
         name,
-        handleNameChange,
         userHouse,
-        setUserHouse,
         form,
+        setUserHouse,
+        handleNameChange,
         handleChange,
         onStartNewGame
     }

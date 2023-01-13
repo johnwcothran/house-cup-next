@@ -22,6 +22,8 @@ export const JoinGame = ({
     <Grid item xs={12}>
         <TextField
             label='Join Existing Game'
+            id='join-existing-game-text-input'
+            data-cy="join-existing-game-text-input"
             fullWidth
             variant='outlined'
             color='primary'
@@ -34,7 +36,14 @@ export const JoinGame = ({
         <Typography align='center' variant='h4' component='p'>Or</Typography>
     </Grid>
     <Grid item xs={12}>
-        <Button size='large' fullWidth variant='outlined' onClick={onStartNewGame}>Start a New Game</Button>
+        <Button
+            data-cy='start-a-new-game'
+            size='large'
+            fullWidth
+            variant='outlined'
+            onClick={onStartNewGame}>
+            Start a New Game
+        </Button>
     </Grid>
 </>
 )

@@ -2,9 +2,9 @@ import Image from 'next/image'
 import Grid from "@mui/material/Grid"
 
 import styles from "../../styles/Book.module.css";
-import { GameType } from "../../pages/api/trivia/[...params]"
 import { houses } from '../../hooks/useHouses';
 import Typography from '@mui/material/Typography';
+import { GameType } from '../../pages/api/socket';
 
 type HouseSortingProps = {
     houses: typeof houses;
@@ -25,8 +25,10 @@ export const HouseSorting = ({houses, data}: HouseSortingProps) => {
                         />  
                     </Grid>
                     <Grid container alignItems="flex-start" >
-                        {data?.houses?.[house.name]?.users.map(user => <Grid item xs={12} key={user}>
-                            <Typography align='center'>{user}</Typography>
+                        {data?.houses?.[house.name]?.users.map((user, idx) => <Grid item xs={12} key={user}>
+                            <Typography
+                                data-cy={`${house.name}-${idx}-${user}`}
+                                align='center'>{user}</Typography>
                         </Grid>)}
                     </Grid>
                     

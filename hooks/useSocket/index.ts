@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import {io, Socket} from 'socket.io-client'
-import { GameType, HousesType, HouseType } from '../../pages/api/trivia/[...params]';
+import { GameType, HousesType, HouseType } from '../../pages/api/socket';
+
 
 interface ServerToClientEvents {
     noArg: () => void;

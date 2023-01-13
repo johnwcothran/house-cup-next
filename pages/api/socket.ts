@@ -1,7 +1,27 @@
-import { loadStaticPaths } from 'next/dist/server/dev/static-paths-worker';
 import { Server } from 'Socket.IO';
-import { GameType, HouseType } from './trivia/[...params]';
-import { set, get, cloneDeep } from 'lodash';
+
+export const houses = ["Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"] as const;
+export type HouseType = typeof houses[number];
+
+
+export type HousesType = {
+    Gryffindor: {
+        users: string[]
+    },
+    Ravenclaw: {
+        users: string[]
+    },
+    Hufflepuff: {
+        users: string[]
+    },
+    Slytherin: {
+        users: string[]
+    }
+}
+
+export type GameType = {
+    houses: HousesType
+}
 
 const newGame = {
     houses: {
@@ -87,7 +107,6 @@ const SocketHandler = (req: any, res: any) => {
             }
             console.log(name, house, gameId);
             trivia[gameId].houses[house].users.push(name);
-            console.log(get(trivia, [gameId, 'houses', house, 'users']));
             socket.to(gameId).emit('recieved_user_join_game', { trivia: trivia[gameId] })
             cb(trivia[gameId]);
         })
