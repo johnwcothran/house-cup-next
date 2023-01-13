@@ -2,6 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+To install:
+```bash
+npm install --legacy-peer-deps
+```
+
 To run Cypress:
 ```bash
 npm run cypress
