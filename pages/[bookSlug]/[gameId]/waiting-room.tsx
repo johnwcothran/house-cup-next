@@ -51,10 +51,10 @@ const TriviaGame = ({ book }: StartTriviaProps) => {
                             {GameId.toUpperCase()}
                         </Typography>
                     </Grid>
-                    <Grid xs={12}>
+                    <Grid item xs={12}>
                         <HouseSorting data={data} houses={houses} />
                     </Grid>
-                    <Grid xs={12}>
+                    <Grid item xs={12}>
                         <Button size='large' fullWidth variant='outlined' onClick={startGame}>Begin Game</Button>
                     </Grid>
                 </Grid>
@@ -68,11 +68,9 @@ export default TriviaGame;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const { bookSlug } = context.query;
-    console.log(bookSlug)
     const book: BookType[] = await fetch(`https://qxzwsq06.api.sanity.io/v1/data/query/production?query=*[slug.current=="${bookSlug}"][0]`)
         .then(r => r.json())
         .then(r => r.result);
-    console.log(book);
     return {
         props: {
             book

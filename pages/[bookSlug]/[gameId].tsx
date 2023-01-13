@@ -28,71 +28,71 @@ const TriviaGame = ({ book }: StartTriviaProps) => {
         fetch(`/api/trivia/${form}`).then(r => r.json()).then(r => console.log(r));
     }, [form]);
 
-    return <MainLayout>
-        <>
-            <Image
-                className={styles.heroBackground}
-                src="/images/poa.jpeg"
-                alt="Next.js Logo"
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
-            />
-            <Container maxWidth='sm' className={styles.content}>
-                <Grid container justifyItems='center' alignItems='center' gap={2}>
-                    <Grid item xs={12}>
-                        <Typography align='center' component='h1' variant='h4' color='primary' gutterBottom>
-                            {gameId}
-                            {' Trivia'}
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField
-                            label='Your Name'
-                            fullWidth
-                            variant='outlined'
-                            size='large'
-                            placeholder={`Enter Your Name`}
-                            onChange={handleNameChange}
-                            value={name} />
-                    </Grid>
-
-                    {name.length > 0 && <>
-                        <Grid item xs={12} margin={4}>
-                            <Divider />
+    return (
+        <MainLayout>
+            <>
+                <Image
+                    className={styles.heroBackground}
+                    src="/images/poa.jpeg"
+                    alt="Next.js Logo"
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                />
+                <Container maxWidth='sm' className={styles.content}>
+                    <Grid container justifyItems='center' alignItems='center' gap={2}>
+                        <Grid item xs={12}>
+                            <Typography align='center' component='h1' variant='h4' color='primary' gutterBottom>
+                                {gameId}
+                                {' Trivia'}
+                            </Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
-                                label='Join Existing Game'
+                                label='Your Name'
                                 fullWidth
                                 variant='outlined'
-                                color='primary'
                                 size='large'
-                                placeholder={`Enter your 4-digit code to join!`}
-                                onChange={handleChange}
-                                value={form} />
+                                placeholder={`Enter Your Name`}
+                                onChange={handleNameChange}
+                                value={name} />
                         </Grid>
-                        <Grid item xs={12}>
-                            <Typography align='center' variant='h4' component='p'>Or</Typography>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Button size='large' fullWidth variant='outlined'>Start a New Game</Button>
-                        </Grid>
-                    </>}
-                </Grid>
-            </Container>
-        </>
-    </MainLayout>;
+
+                        {name.length > 0 && <>
+                            <Grid item xs={12} margin={4}>
+                                <Divider />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    label='Join Existing Game'
+                                    fullWidth
+                                    variant='outlined'
+                                    color='primary'
+                                    size='large'
+                                    placeholder={`Enter your 4-digit code to join!`}
+                                    onChange={handleChange}
+                                    value={form} />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Typography align='center' variant='h4' component='p'>Or</Typography>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Button size='large' fullWidth variant='outlined'>Start a New Game</Button>
+                            </Grid>
+                        </>}
+                    </Grid>
+                </Container>
+            </>
+        </MainLayout>
+    );
 };
 
 export default TriviaGame;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const { bookSlug } = context.query;
-    console.log(bookSlug)
     const book: BookType[] = await fetch(`https://qxzwsq06.api.sanity.io/v1/data/query/production?query=*[slug.current=="${bookSlug}"][0]`)
         .then(r => r.json())
         .then(r => r.result);
-    console.log(book);
     return {
         props: {
             book

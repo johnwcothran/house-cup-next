@@ -10,9 +10,9 @@ interface ServerToClientEvents {
     recieved_user_join_game: (data: {gameId: string; name: string}) => void;
     get_houses_response: (data: HousesType) => void;
   }
-  
+  type JoinGameCallbackType = (r: string) => void;
   interface ClientToServerEvents {
-    join_game: ({ gameId }: { gameId: string }) => void;
+    join_game: ({ gameId }: { gameId: string }, cb?: JoinGameCallbackType) => void;
     user_join_game: ({ gameId, name, house }: { gameId: string, name: string; house: HouseType }, cb: (m: GameType) => void) => void;
     get_houses: ({gameId}: {gameId: string}, cb: (response: GameType) => void) => void
   }

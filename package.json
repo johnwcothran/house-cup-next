@@ -24,6 +24,7 @@
     "@types/react-dom": "18.0.10",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
+    "lodash": "^4.17.21",
     "next": "13.1.1",
     "node-cache": "^5.1.2",
     "react": "18.2.0",
@@ -31,5 +32,9 @@
     "socket.io": "^4.5.4",
     "socket.io-client": "^4.5.4",
     "typescript": "4.9.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.191",
+    "cypress": "^12.3.0"
   }
 }

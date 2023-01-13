@@ -40,7 +40,8 @@ export const useHouses = ({gameId}: UseHousesProps) => {
     }, [socket])
 
     const startGame = () => {
-        socket?.emit("join_game", { gameId })
+        // socket?.emit("join_game", { gameId })
+        alert('Feature is not yet complete!')
     }
 
     const userJoin = ({name, house}: {name: string; house: HouseType}) => {

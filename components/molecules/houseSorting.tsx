@@ -17,15 +17,15 @@ export const HouseSorting = ({houses, data}: HouseSortingProps) => {
                 <Grid container>
                     <Grid item xs={12} textAlign={'center'}>
                         <Image
-                        className={styles.houseLogo}
-                        src={house.image}
-                        alt={house.name}
-                        height={100}
-                        width={100}
-                    />  
+                            className={styles.houseLogo}
+                            src={house.image}
+                            alt={house.name}
+                            height={100}
+                            width={100}
+                        />  
                     </Grid>
                     <Grid container alignItems="flex-start" >
-                        {data?.houses?.[house.name]?.users.map(user => <Grid item xs={12}>
+                        {data?.houses?.[house.name]?.users.map(user => <Grid item xs={12} key={user}>
                             <Typography align='center'>{user}</Typography>
                         </Grid>)}
                     </Grid>
