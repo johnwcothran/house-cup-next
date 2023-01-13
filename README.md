@@ -37,6 +37,9 @@ The past app has only been able to be interacted with from one interface, so we 
 goal with this project is to be able to have everyone play using their phones. This makes for an interesting challenge with Websockets 
 (using Socked IO). This project is still early on, so please don't judge too harshly :)
 
+Right now the backend is holding an in-memory cache that requires data mutation just to work (yuck!). This will eventually be persisted
+in a Redis cache.
+
 
 ## Deploy on Vercel
 
